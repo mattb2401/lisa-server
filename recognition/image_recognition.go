@@ -48,12 +48,8 @@ func loadImageClassificationModel() (*tensorflow.Graph, []string, error) {
 	return graph, labels, nil
 }
 
-func createTensorFromImage(fileName string) (*tensorflow.Tensor, error) {
-	fileBytes, err := ioutil.ReadFile(fileName)
-	if err != nil {
-		return nil, err
-	}
-	tensor, err := tensorflow.NewTensor(string(fileBytes))
+func createTensorFromImage(file []byte) (*tensorflow.Tensor, error) {
+	tensor, err := tensorflow.NewTensor(string(file))
 	if err != nil {
 		return nil, err
 	}
@@ -101,7 +97,7 @@ func getNormalizedGraph() (graph *tensorflow.Graph, input, output tensorflow.Out
 	return graph, input, output, err
 }
 
-func ClassifyImage(imageFile string) ([]Label, error) {
+func ClassifyImage(imageFile []byte) ([]Label, error) {
 	graph, labels, err := loadImageClassificationModel()
 	if err != nil {
 		return nil, err

@@ -11,7 +11,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	response, err := recognition.ClassifyImage(string(imageFile))
+	response, err := recognition.ClassifyImage(imageFile)
 	if err != nil {
 		panic(err)
 	}
