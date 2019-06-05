@@ -15,5 +15,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	log.Print(response)
+	log.Printf("response: %v", response)
 }
